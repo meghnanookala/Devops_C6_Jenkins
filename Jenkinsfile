@@ -36,7 +36,7 @@ pipeline {
       steps {
         script {
           sh 'docker rmi 009172737512.dkr.ecr.us-east-1.amazonaws.com/c42project-meghna:${BUILD_NUMBER}'
-          sh 'docker rmi project-meghna:${BUILD_NUMBER}'
+          sh 'docker rmi c42project-meghna:${BUILD_NUMBER}'
         }
       }
     }
@@ -47,7 +47,7 @@ pipeline {
           sh '''
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 009172737512.dkr.ecr.us-east-1.amazonaws.com
           docker pull 009172737512.dkr.ecr.us-east-1.amazonaws.com/c42project-meghna:${BUILD_NUMBER}
-          docker run -d -p 8080:8081 009172737512.dkr.ecr.us-east-1.amazonaws.com/project-meghna:${BUILD_NUMBER}
+          docker run -d -p 8080:8081 009172737512.dkr.ecr.us-east-1.amazonaws.com/c42project-meghna:${BUILD_NUMBER}
           '''
         }
       }
