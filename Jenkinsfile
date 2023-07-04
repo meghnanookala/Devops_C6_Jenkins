@@ -24,7 +24,7 @@ pipeline {
         script {     
           sh '''
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 009172737512.dkr.ecr.us-east-1.amazonaws.com
-          docker build -t c42project-${BUILD_NUMBER} .
+          docker build -t c42project-meghna:${BUILD_NUMBER} .
           docker tag c42project-meghna:${BUILD_NUMBER} 009172737512.dkr.ecr.us-east-1.amazonaws.com/c42project-meghna:${BUILD_NUMBER}
           docker push 009172737512.dkr.ecr.us-east-1.amazonaws.com/c42project-meghna:${BUILD_NUMBER}
           '''
